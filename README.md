@@ -1,6 +1,5 @@
 # pdf2thumbnail
-Generate PDF thumbnails.
-
+Generate PDF thumbnails.  
 You can install this module using npm:
 ```sh
 npm i pdf2thumbnail
@@ -33,8 +32,8 @@ sudo yum -y install ImageMagick
     ```js
     const {writeThumbnails} = require('pdf2thumbnail');
 
-    writeThumbnails('sample.pdf', `${__dirname}/out1`);
-    // $ ll out1/
+    writeThumbnails('sample.pdf', './dir');
+    // $ ll dir
     // -rw-rw-r-- 1 ec2-user ec2-user 43157 Aug  5 09:17 sample_1.jpg
     // -rw-rw-r-- 1 ec2-user ec2-user 24496 Aug  5 09:17 sample_2.jpg
     // ...
@@ -43,12 +42,12 @@ sudo yum -y install ImageMagick
     ```js
     const {writeThumbnails} = require('pdf2thumbnail');
 
-    writeThumbnails('sample.pdf', `${__dirname}/out2`, {
+    writeThumbnails('sample.pdf', './dir', {
       width: 300,
       quality: 100,
       format: 'png'
     });
-    // $ ll out2/
+    // $ ll dir
     // -rw-rw-r-- 1 ec2-user ec2-user 42722 Aug  5 09:17 sample_1.png
     // -rw-rw-r-- 1 ec2-user ec2-user 22411 Aug  5 09:17 sample_2.png
     // ...
@@ -57,24 +56,24 @@ sudo yum -y install ImageMagick
     ```js
     const {writeThumbnails} = require('pdf2thumbnail');
 
-    writeThumbnails('sample.pdf', `${__dirname}/out3`, {
+    writeThumbnails('sample.pdf', './dir', {
       start: 1,
       end: 1
     });
 
-    // $ll out3/
+    // $ ll dir
     // -rw-rw-r-- 1 ec2-user ec2-user 43157 Aug  5 09:17 sample_1.jpg
     ```
 - Thumbnails for pages 2-5.
     ```js
     const {writeThumbnails} = require('pdf2thumbnail');
 
-    writeThumbnails('sample.pdf', `${__dirname}/out4`, {
+    writeThumbnails('sample.pdf', './dir', {
       start: 2,
       end: 5
     });
 
-    // $ ll out4/
+    // $ ll dir
     // -rw-rw-r-- 1 ec2-user ec2-user 24496 Aug  5 09:17 sample_2.jpg
     // -rw-rw-r-- 1 ec2-user ec2-user 41054 Aug  5 09:17 sample_3.jpg
     // -rw-rw-r-- 1 ec2-user ec2-user 45361 Aug  5 09:17 sample_4.jpg
