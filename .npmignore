@@ -1,2 +1,6 @@
 node_modules/
-docs/
+web-demo/node_modules/
+web-demo/public/upload/*
+!web-demo/public/upload/
+.vscode/
+tests/

@@ -1,0 +1,18 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon --ignore client/ --ignore public/ --ignore views/ bin/www 8080"
+  },
+  "dependencies": {
+    "debug": "~2.6.9",
+    "express-sweet": "~1",
+    "glob": "^8.0.3",
+    "http-errors": "~1.6.3",
+    "nodejs-shared": "^1.0.10",
+    "pdf2thumbnail": "^1.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

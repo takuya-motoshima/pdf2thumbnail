@@ -1,8 +1,8 @@
 import typescript from 'rollup-plugin-typescript2';
-import {terser} from "rollup-plugin-terser";
-import json from 'rollup-plugin-json';
-import commonjs from 'rollup-plugin-commonjs'
-import resolve from 'rollup-plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
+import json from '@rollup/plugin-json';
+import commonjs from '@rollup/plugin-commonjs';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
 import builtins from 'builtin-modules'
 import pkg from './package.json';
 
@@ -19,8 +19,11 @@ export default {
     }),
     terser(),
     json(),
-    commonjs(),
-    resolve({
+    commonjs({
+      // NOTE: Added a setting to ignore original-fs to solve "Error: Cannot find module 'original-fs'" that occurs in adm-zip.
+      ignore: ['original-fs']
+    }),
+    nodeResolve({
       mainFields: ['module', 'main'],
       // preferBuiltins: false
     })

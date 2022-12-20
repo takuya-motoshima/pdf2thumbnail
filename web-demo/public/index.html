@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<!--begin::Head-->
+<head>
+  <title>Demonstration of pdf2thumbnail</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--begin::Fonts-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+  <!--end::Fonts-->
+  <!--begin::Global Stylesheets Bundle(used by all pages)-->
+  <link href="theme/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="theme/css/style.bundle.css" rel="stylesheet" type="text/css" />
+  <!--end::Global Stylesheets Bundle-->
+  <!--begin::Custom Stylesheets-->
+  <style>
+    .dropzone.dropzone-queue .dropzone-item .dropzone-toolbar [class*="dropzone-"] i {
+      transition: color 0.2s ease;
+      font-size: 0.8rem;
+      color: var(--kt-gray-800);
+    }
+
+    .dropzone.dropzone-queue .dropzone-item .dropzone-toolbar .dropzone-download,
+    .dropzone.dropzone-queue .dropzone-item .dropzone-toolbar .dropzone-preview {
+      height: 25px;
+      width: 25px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .badge {
+      --bs-badge-font-weight: 400;
+    }
+  </style>
+  <!--end::Custom Stylesheets-->
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body>
+  <!--begin::Content container-->
+  <div class="container py-15 px-10">
+  <!-- <div class="container-xxl py-15 px-10"> -->
+    <!--begin::Heading-->
+    <h1 class="mb-5">Create PDF thumbnails.</h1>
+    <!--end::Heading-->
+    <!--begin::Form-->
+    <form class="form" action="#" method="post">
+      <!--begin::Dropzone-->
+      <div data-ref="dropzone" class="dropzone dropzone-queue mb-2">
+        <!--begin::Controls-->
+        <div class="dropzone-panel mb-lg-0 mb-2 d-flex">
+          <a data-ref="select" class="dropzone-select btn btn-sm btn-primary me-2">Select File</a>
+          <a data-ref="uploadAll" class="dropzone-upload btn btn-sm btn-light-primary me-2">Upload All</a>
+          <a data-ref="removeAll" class="dropzone-remove-all btn btn-sm btn-light-primary">Remove All</a>
+        </div>
+        <!--end::Controls-->
+        <!--begin::Items-->
+        <div data-ref="dropzoneItems"></div>
+        <!--end::Items-->
+      </div>
+      <!--end::Dropzone-->
+    </form>
+    <!--end::Form-->
+  </div>
+  <!--end::Content container-->
+  <!--begin::Javascript-->
+  <!--begin::Global Javascript Bundle(used by all pages)-->
+  <script src="theme/plugins/global/plugins.bundle.js"></script>
+  <script src="theme/js/scripts.bundle.js"></script>
+  <!--end::Global Javascript Bundle-->
+	<!--begin::Custom Javascript(used for this page only)-->
+  <script src="libs/metronic-extension/dist/build.js"></script>
+  <script>
+    const {selectRef, initTooltip} = metronicExtension;
+    const ref = selectRef();
+
+    // Make the whole body a dropzone.
+    const dropzone = new Dropzone(ref.dropzone.get(0), {
+      url: '/thumbnail',
+      paramName: 'files',
+      parallelUploads: 20,
+      acceptedFiles: 'application/pdf',
+      previewTemplate: 
+        `<div class="dropzone-item">
+          <!--begin::Svg Icon | path: icons/duotune/files/fil003.svg-->
+          <span class="svg-icon svg-icon-2x svg-icon-primary me-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path opacity="0.3" d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22Z" fill="currentColor"></path>
+              <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="currentColor"></path>
+            </svg>
+          </span>
+          <!--end::Svg Icon-->
+          <!--begin::File-->
+          <div class="dropzone-file">
+            <div class="dropzone-filename text-gray-800" style="cursor: default;">
+            <!-- <div class="dropzone-filename"> -->
+              <span data-dz-name></span>
+              <strong>(<span data-dz-size>0kb</span>)</strong>
+            </div>
+            <div class="dropzone-error" data-dz-errormessage></div>
+          </div>
+          <!--end::File-->
+          <!--begin::Progress-->
+          <div class="dropzone-progress">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-dz-uploadprogress></div>
+            </div>
+          </div>
+          <!--end::Progress-->
+          <!--begin::Status-->
+          <div class="dropzone-status text-gray-800 fs-8 ms-4 d-none">
+            <span class="badge badge-secondary">Uploading</span>
+          </div>
+          <!--end::Status-->
+          <!--begin::Spinner-->
+          <span class="dropzone-spinner spinner-border spinner-border-sm text-primary ms-4 d-none" role="status"></span>
+          <!--end::Spinner-->
+          <!--begin::Toolbar-->
+          <div class="dropzone-toolbar">
+            <button
+              type="button"
+              class="btn btn-icon dropzone-start"
+              data-bs-toggle="tooltip"
+              title="Click me to upload image.">
+              <i class="bi bi-play-fill fs-3"></i></button>
+            <a
+              class="btn btn-icon dropzone-download d-none"
+              data-bs-toggle="tooltip"
+              title="Click me to download image."
+              download>
+              <i class="bi bi-download fs-3"></i></a>
+            <a
+              class="btn btn-icon dropzone-preview d-none"
+              data-bs-toggle="tooltip"
+              title="Click me to preview image."
+              target="_blank">
+              <i class="bi bi-search fs-5"></i></a>
+            <button
+              type="button"
+              class="btn btn-icon dropzone-cancel"
+              data-dz-remove
+              data-bs-toggle="tooltip"
+              title="Click me to remove file."
+              style="display: none;">
+              <i class="bi bi-x fs-3"></i></button>
+            <button
+              type="button"
+              class="btn btn-icon dropzone-delete"
+              data-dz-remove
+              data-bs-toggle="tooltip"
+              title="Click me to remove file.">
+              <i class="bi bi-x fs-1"></i></button>
+          </div>
+          <!--end::Toolbar-->
+        </div>`,
+      // Max filesize in MB.
+      maxFilesize: 100,
+      // Make sure the files aren't queued until manually added.
+      autoQueue: false,
+      // Define the container to display the previews.
+      previewsContainer: ref.dropzoneItems.get(0),
+      // Define the element that should be used as click trigger to select files.
+      clickable: ref.select.get(0)
+    });
+
+    dropzone.on('addedfile', file => {
+      const dropzoneItem = $(file.previewElement)
+      dropzoneItem.on('click', '.dropzone-start', () => dropzone.enqueueFile(file));
+      ref.uploadAll.css('display', 'inline-block');
+      ref.removeAll.css('display', 'inline-block');
+      initTooltip(dropzoneItem);
+    });
+
+    dropzone.on('sending', file => {
+      const dropzoneItem = $(file.previewElement);
+      dropzoneItem.find('.progress-bar').css('opacity', 1);
+      dropzoneItem.find('.dropzone-start').addClass('d-none');
+      dropzoneItem.find('.dropzone-status').removeClass('d-none');
+    });
+
+    dropzone.on('uploadprogress', (file, progress) => {
+      const dropzoneItem = $(file.previewElement);
+      dropzoneItem.find('.progress-bar').css('width', `${progress}%`);
+      if (progress === 100) {
+        dropzoneItem.find('.progress-bar').css('opacity', 0);
+        dropzoneItem.find('.progress').css('opacity', 0);
+        dropzoneItem.find('.dropzone-status').html('<span class="badge badge-secondary">Converting</span>');
+        dropzoneItem.find('.dropzone-spinner').removeClass('d-none');
+      }
+    });
+
+    // Response after upload success.
+    dropzone.on('success', (file, res) => {
+      const dropzoneItem = $(file.previewElement);
+      dropzoneItem.find('.dropzone-download').attr('href', res.archivePath);
+      dropzoneItem.find('.dropzone-preview').attr('href', res.mergedPath);
+    });
+
+    dropzone.on('complete', (file, res) => {
+      const dropzoneItem = $(file.previewElement);
+      dropzoneItem.find('.dropzone-spinner').addClass('d-none');
+      if (file.status === 'success') {
+        dropzoneItem.find('.dropzone-download').removeClass('d-none');
+        dropzoneItem.find('.dropzone-preview').removeClass('d-none');
+        dropzoneItem.find('.dropzone-status').html('<span class="badge badge-success">Finished</span>');
+      } else {
+        dropzoneItem.find('.dropzone-start').addClass('d-none');
+        dropzoneItem.find('.dropzone-status').html('<span class="badge badge-danger">Error</span>').removeClass('d-none');
+      }
+    });
+
+    dropzone.on('queuecomplete', () => {
+      ref.uploadAll.css('display', 'none');
+    });
+
+    dropzone.on('removedfile', file => {
+      if (dropzone.files.length < 1) {
+        ref.uploadAll.css('display', 'none');
+        ref.removeAll.css('display', 'none');
+      }
+      for (let tooltipTrigger of file.previewElement.querySelectorAll('.dropzone-start,.dropzone-download,.dropzone-preview,.dropzone-cancel,.dropzone-delete')) {
+        const tooltip = bootstrap.Tooltip.getInstance(tooltipTrigger);
+        tooltip.dispose();
+      }
+    });
+    
+    ref.uploadAll.on('click', () => {
+      dropzone.enqueueFiles(dropzone.getFilesWithStatus(Dropzone.ADDED));
+    });
+
+    ref.removeAll.on('click', () => {
+      ref.uploadAll.css('display', 'none');
+      ref.removeAll.css('display', 'none');
+      dropzone.removeAllFiles(true);
+    });
+  </script>
+  <!--end::Custom Javascript-->
+  <!--end::Javascript-->
+</body>
+<!--end::Body-->
+</html>
