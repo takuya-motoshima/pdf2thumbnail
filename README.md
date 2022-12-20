@@ -3,7 +3,7 @@ Generate PDF thumbnails.
 Click [here](CHANGELOG.md) to see the change log.
 
 <p align="center">
-  <img src="screencaps/pdf2thumbnail.png" width="406">
+  <img src="screencaps/pdf2thumbnail.png">
 </p>
 
 - [pdf2thumbnail](#pdf2thumbnail)

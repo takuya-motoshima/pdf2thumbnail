@@ -1,7 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.0.3] - 2022/12/14
+## [1.0.4] - 2022/12/21
+### Changed
+- Fix README.md.
+
+## [1.0.3] - 2022/12/21
 ### Added
 - Merged images of all page thumbnails have been added to the write-up results.  
     The merged image file will be written to the output directory with the same name as the PDF.  
@@ -74,3 +78,4 @@ All notable changes to this project will be documented in this file.
 [1.0.1]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.0...v1.0.1
 [1.0.2]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.1...v1.0.2
 [1.0.3]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.2...v1.0.3
+[1.0.4]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.3...v1.0.4
