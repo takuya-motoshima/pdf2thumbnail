@@ -1,6 +1,6 @@
 {
   "name": "pdf2thumbnail",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Generate PDF thumbnails.",
   "main": "dist/build.common.js",
   "module": "dist/build.esm.js",
