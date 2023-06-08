@@ -136,6 +136,8 @@ npm install --save pdf2thumbnail
     - {string} pdfPathOrDataUrl The path to the PDF file, DataURL.
     - {string} outputDir Directory path to output thumbnails.
     - {number} options.width? Width of output thumbnail (px). Default is 595 (px).
+    - {number} options.xDensity? Horizontal resolution. The unit is dpi and default is 288.
+    - {number} options.yDensity? Vertical resolution. The unit is dpi and default is 288.
     - {number} options.quality? The quality of the thumbnail to output (1-100). Default is 100.
     - {string} options.format? The format of the output thumbnail. Default is jpg.
     - {number} options.start? Starting page position starting from 1.

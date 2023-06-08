@@ -4,6 +4,14 @@ export default interface ThumbnailOptions {
      */
     width: number;
     /**
+     * Horizontal resolution. The unit is dpi and default is 288.
+     */
+    xDensity: number;
+    /**
+     * Vertical resolution. The unit is dpi and default is 288.
+     */
+    yDensity: number;
+    /**
      * The quality of the thumbnail to output (1-100). Default is 100.
      */
     quality: number;
