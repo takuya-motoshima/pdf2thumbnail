@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.5] - 2023/6/8
+### Changed
+- Fixed PDF image conversion method (pdf2thumbnail.writeThumbnails) not to delete output directory that already existed.
+- The method to convert PDF to images (pdf2thumbnail.writeThumbnails) and the method to get the number of pages in a PDF (pdf2thumbnail.getTotalNumberOfPages) can now process PDF in DataURL format.
+
 ## [1.0.4] - 2022/12/21
 ### Changed
 - Fix README.md.
@@ -79,3 +84,4 @@ All notable changes to this project will be documented in this file.
 [1.0.2]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.1...v1.0.2
 [1.0.3]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.2...v1.0.3
 [1.0.4]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.3...v1.0.4
+[1.0.5]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.4...v1.0.5

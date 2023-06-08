@@ -46,7 +46,7 @@
     "imagemagick": "^0.1.3",
     "module-alias": "^2.2.2",
     "node-merge-images": "^1.0.0",
-    "nodejs-shared": "^1.0.12",
+    "nodejs-shared": "^1.0.23",
     "pdf-parse": "^1.1.1"
   },
   "devDependencies": {

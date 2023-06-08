@@ -47,7 +47,7 @@ npm install --save pdf2thumbnail
 
     #### Syntax
     ```js
-    pdf2thumbnail.getTotalNumberOfPages(pdfPath);
+    pdf2thumbnail.getTotalNumberOfPages(pdfPathOrDataUrl);
     ```
 
     #### Usage
@@ -58,7 +58,7 @@ npm install --save pdf2thumbnail
     ```
 
     #### Parameters
-    - {string} pdfPath Path of the PDF file.
+    - {string} pdfPathOrDataUrl The path to the PDF file, DataURL.
 
     #### Return value
     {Promise&lt;number&gt;} Total number of pages in the PDF document.
@@ -72,15 +72,15 @@ npm install --save pdf2thumbnail
 
     #### Syntax
     ```js
-    pdf2thumbnail.writeThumbnails(pdfPath, outputDir);
-    pdf2thumbnail.writeThumbnails(pdfPath, outputDir, {width: 595});
-    pdf2thumbnail.writeThumbnails(pdfPath, outputDir, {width: 595, quality: 100});
-    pdf2thumbnail.writeThumbnails(pdfPath, outputDir, {width: 595, quality: 100, format: 'jpg'});
-    pdf2thumbnail.writeThumbnails(pdfPath, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1});
-    pdf2thumbnail.writeThumbnails(pdfPath, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1, end: 2});
-    pdf2thumbnail.writeThumbnails(pdfPath, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1, end: 2, archive: true});   
-    pdf2thumbnail.writeThumbnails(pdfPath, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1, end: 2, archive: true, background: '#000'});
-    pdf2thumbnail.writeThumbnails(pdfPath, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1, end: 2, archive: true, background: '#000', offset: 30});
+    pdf2thumbnail.writeThumbnails(pdfPathOrDataUrl, outputDir);
+    pdf2thumbnail.writeThumbnails(pdfPathOrDataUrl, outputDir, {width: 595});
+    pdf2thumbnail.writeThumbnails(pdfPathOrDataUrl, outputDir, {width: 595, quality: 100});
+    pdf2thumbnail.writeThumbnails(pdfPathOrDataUrl, outputDir, {width: 595, quality: 100, format: 'jpg'});
+    pdf2thumbnail.writeThumbnails(pdfPathOrDataUrl, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1});
+    pdf2thumbnail.writeThumbnails(pdfPathOrDataUrl, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1, end: 2});
+    pdf2thumbnail.writeThumbnails(pdfPathOrDataUrl, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1, end: 2, archive: true});   
+    pdf2thumbnail.writeThumbnails(pdfPathOrDataUrl, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1, end: 2, archive: true, background: '#000'});
+    pdf2thumbnail.writeThumbnails(pdfPathOrDataUrl, outputDir, {width: 595, quality: 100, format: 'jpg', start: 1, end: 2, archive: true, background: '#000', offset: 30});
     ```
 
     #### Usage
@@ -133,7 +133,7 @@ npm install --save pdf2thumbnail
         ```
 
     #### Parameters
-    - {string} pdfPath Path of the PDF file.
+    - {string} pdfPathOrDataUrl The path to the PDF file, DataURL.
     - {string} outputDir Directory path to output thumbnails.
     - {number} options.width? Width of output thumbnail (px). Default is 595 (px).
     - {number} options.quality? The quality of the thumbnail to output (1-100). Default is 100.
@@ -175,7 +175,7 @@ npm run test
 # > pdf2thumbnail@1.0.2 test
 # > jest
 
-#  PASS  tests/pdf-to-thumbnail.test.js
+#  PASS  __tests__/pdf2image.test.js
 #   PDF to Thumbnail
 #     ? Should write thumbnails of all pages. (639 ms)
 #     ? Should write thumbnails for pages 2-3. (738 ms)
@@ -184,7 +184,7 @@ npm run test
 #     ? Each thumbnail in the merged image should be written at 30px intervals. (656 ms)
 #     ? Should write thumbnails in png format. (896 ms)
 
-#  PASS  tests/case-of-exception.test.js
+#  PASS  __tests__/exception.test.js
 #   Case of exception
 #     ? Should throw an error if the PDF path parameter is empty. (331 ms)
 #     ? Should throw an error if the PDF is not found. (1 ms)
@@ -199,7 +199,7 @@ npm run test
 #     ? Should throw an error if end option is less than 0.
 #     ? Should throw an error if offset option is less than 0.
 
-#  PASS  tests/total-number-of-pdf-pages.test.js
+#  PASS  __tests__/number-of-pages.test.js
 #   Total number of PDF pages
 #     ? Should get the number of pages in the PDF. (180 ms)
 
