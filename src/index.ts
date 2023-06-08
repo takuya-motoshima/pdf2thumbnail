@@ -158,7 +158,8 @@ export const writeThumbnails = async (pdfPathOrDataUrl: string, outputDir: strin
     await convert(pdfPath, options.width!, options.quality!, 1, `${outputDir.replace(/\/$/, '')}/${basename}_%d.${options.format}`);
 
   // Thumbnail path list.
-  const thumbnailPaths = File.find(`${outputDir.replace(/\/$/, '')}/*`)
+  const thumbnailPaths = File.find(`${outputDir.replace(/\/$/, '')}/${basename}*.${options.format}`)
+  // const thumbnailPaths = File.find(`${outputDir.replace(/\/$/, '')}/*`)
     .sort((a: string, b: string) => {
       return a.localeCompare(b, undefined, {numeric: true, sensitivity: 'base'})
     });

@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.6] - 2023/6/8
+### Fixed
+- Fixed an error in the method for converting PDF to images (pdf2thumbnail.writeThumbnails) that occurs when there are non-image files in the output directory.
+
 ## [1.0.5] - 2023/6/8
 ### Changed
 - Fixed PDF image conversion method (pdf2thumbnail.writeThumbnails) not to delete output directory that already existed.
@@ -85,3 +89,4 @@ All notable changes to this project will be documented in this file.
 [1.0.3]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.2...v1.0.3
 [1.0.4]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.3...v1.0.4
 [1.0.5]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.4...v1.0.5
+[1.0.6]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.5...v1.0.6
