@@ -1,30 +1,19 @@
 # pdf2thumbnail
 Generate PDF thumbnails.  
-Click [here](CHANGELOG.md) to see the change log.
-
-<p align="center">
-  <img src="screencaps/pdf2thumbnail.png">
-</p>
+Click [here](CHANGELOG.md) to see the change log.  
+![pdf2thumbnail.png](screencaps/pdf2thumbnail.png)
 
 - [pdf2thumbnail](#pdf2thumbnail)
-    - [Web Demo](#web-demo)
-    - [Supported OS](#supported-os)
     - [Requirements](#requirements)
+    - [Supported OS](#supported-os)
     - [Installation](#installation)
     - [API](#api)
-    - [Unit testing](#unit-testing)
+    - [Web Demo](#web-demo)
+    - [Testing](#testing)
     - [Author](#author)
     - [License](#license)
 
-## Web Demo
-Click [here](web-demo/README.md) to learn how to use the web demo.    
-
-## Supported OS
-- Linux
-- MAC
-
 ## Requirements
-<!-- - Node.js >= v14.14.0 -->
 - imagemagick CLI >= v6.9.10  
     Installation example:  
     - For instance, if you're on OS X you can use Homebrew.
@@ -35,6 +24,10 @@ Click [here](web-demo/README.md) to learn how to use the web demo.
         ```sh
         sudo yum -y install ImageMagick
         ```
+
+## Supported OS
+- Linux
+- MAC
 
 ## Installation
 ```sh
@@ -171,45 +164,14 @@ npm install --save pdf2thumbnail
     - {TypeError} The end option is not a number greater than 1.
     - {TypeError} The offset option is not a number greater than 0.
 
-## Unit testing
+## Web Demo
+Click [here](demo/README.md) to learn how to use the web demo.    
+
+## Testing
+With [npm](http://npmjs.org) do:
+
 ```sh
-npm run test
-# > pdf2thumbnail@1.0.2 test
-# > jest
-
-#  PASS  __tests__/pdf2image.test.js
-#   PDF to Thumbnail
-#     ? Should write thumbnails of all pages. (639 ms)
-#     ? Should write thumbnails for pages 2-3. (738 ms)
-#     ? Should be a thumbnail of the specified width. (515 ms)
-#     ? An archive of thumbnails should be created. (606 ms)
-#     ? Each thumbnail in the merged image should be written at 30px intervals. (656 ms)
-#     ? Should write thumbnails in png format. (896 ms)
-
-#  PASS  __tests__/exception.test.js
-#   Case of exception
-#     ? Should throw an error if the PDF path parameter is empty. (331 ms)
-#     ? Should throw an error if the PDF is not found. (1 ms)
-#     ? Should throw an error if the width option is 0. (1 ms)
-#     ? Should throw an error if width option is less than 0. (1 ms)
-#     ? Should throw an error if quality option is 0. (1 ms)
-#     ? Should throw an error if quality option is less than 0. (1 ms)
-#     ? Should throw an error if quality option is greater than 100. (2 ms)
-#     ? Should throw an error if the start option is 0.
-#     ? Should throw an error if start option is less than 0.
-#     ? Should throw an error if end option is 0.
-#     ? Should throw an error if end option is less than 0.
-#     ? Should throw an error if offset option is less than 0.
-
-#  PASS  __tests__/number-of-pages.test.js
-#   Total number of PDF pages
-#     ? Should get the number of pages in the PDF. (180 ms)
-
-# Test Suites: 3 passed, 3 total
-# Tests:       19 passed, 19 total
-# Snapshots:   0 total
-# Time:        6.17 s
-# Ran all test suites.
+npm test
 ```
 
 ## Author

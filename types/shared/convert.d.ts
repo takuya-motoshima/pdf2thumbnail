@@ -1,6 +1,5 @@
 /**
  * Run the command to convert PDF to image.
- *
  * @param {string} pdfPath Path of the PDF file.
  * @param {number} width Width of output thumbnail (px).
  * @param {number} xDensity Horizontal resolution. The unit is dpi and default is 288.

@@ -2,10 +2,8 @@ import AdmZip from 'adm-zip';
 
 /**
  * Archive Thumbnails.
- *
- * @export
  * @param {string} archiveDir Directory to archive.
- * @return {string}           The archive path created.
+ * @return {string} The archive path created.
  */
 export default (archiveDir: string): string => {
   const zip = new AdmZip();

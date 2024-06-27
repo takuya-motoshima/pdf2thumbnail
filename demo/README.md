@@ -1,4 +1,4 @@
-# Web demo of pdf2thumbnail
+# pdf2thumbnail web demo
 
 ## Getting Started
 1. Install dependencies.

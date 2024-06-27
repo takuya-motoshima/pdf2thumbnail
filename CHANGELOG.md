@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.0.8] - 2024/6/27
+### Changed
+- Updated [nodejs-shared](https://www.npmjs.com/search?q=nodejs-shared) from 1.0.23 to 1.0.30.
+
 ## [1.0.7] - 2023/6/8
 ### Fixed
 - Added resolution options (xDensity, yDensity) to PDF thumbnail method (pdf2thumbnail.writeThumbnails) options.
@@ -59,7 +63,7 @@ All notable changes to this project will be documented in this file.
     -rw-rw-r-- 1 ec2-user ec2-user 384545 Dec 20 18:04 sample.jpg
     ```
 - Web demo added.  
-    See [here](web-demo/README.md) for more information.
+    See [here](demo/README.md) for more information.
 
 ### Changed
 - The thumbnail write function now returns the following generated thumbnail path information.  
@@ -95,3 +99,4 @@ All notable changes to this project will be documented in this file.
 [1.0.5]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.4...v1.0.5
 [1.0.6]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.5...v1.0.6
 [1.0.7]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.6...v1.0.7
+[1.0.8]: https://github.com/takuya-motoshima/pdf2thumbnail/compare/v1.0.7...v1.0.8

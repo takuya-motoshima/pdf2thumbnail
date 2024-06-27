@@ -2,7 +2,6 @@ import im from 'imagemagick';
 
 /**
  * Run the command to convert PDF to image.
- *
  * @param {string} pdfPath Path of the PDF file.
  * @param {number} width Width of output thumbnail (px).
  * @param {number} xDensity Horizontal resolution. The unit is dpi and default is 288.
@@ -20,7 +19,7 @@ export default async (
   scene: number,
   outputPath: string
 ): Promise<void> => {
-  return new Promise<void>((rslv, rej) => {
+  return new Promise<void>((resolve, reject) => {
     im.convert([
       // Added -units and -density options to specify quality. (2023/6/8)
       '-units',
@@ -42,8 +41,8 @@ export default async (
     ], (err: any) => {
     // ], (err: any, stdout: any) => {
       if (err)
-        return void rej(err);
-      rslv();
+        return void reject(err);
+      resolve();
     });
   });
 }

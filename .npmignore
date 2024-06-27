@@ -1,6 +1,6 @@
 node_modules/
-web-demo/node_modules/
-web-demo/public/upload/*
-!web-demo/public/upload/
+demo/node_modules/
+demo/public/upload/*
+!demo/public/upload/
 .vscode/
 __tests__/

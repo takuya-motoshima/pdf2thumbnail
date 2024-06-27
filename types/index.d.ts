@@ -2,8 +2,6 @@ import ThumbnailOptions from '~/interfaces/ThumbnailOptions';
 import ThumbnailResult from '~/interfaces/ThumbnailResult';
 /**
  * Get the total number of pages in the PDF document.
- *
- * @export
  * @param  {string} pdfPathOrDataUrl The path to the PDF file, DataURL.
  * @return {Promise<number>} Total number of pages in the PDF document.
  * @throws {TypeError} PDF path is empty.
@@ -12,8 +10,6 @@ import ThumbnailResult from '~/interfaces/ThumbnailResult';
 export declare const getTotalNumberOfPages: (pdfPathOrDataUrl: string) => Promise<number>;
 /**
  * Write a thumbnail for each page of the PDF document.
- *
- * @export
  * @param {string} pdfPathOrDataUrl The path to the PDF file, DataURL.
  * @param {string} outputDir Directory path to output thumbnails.
  * @param {number} options.width? Width of output thumbnail (px). Default is 595 (px).
@@ -25,10 +21,10 @@ export declare const getTotalNumberOfPages: (pdfPathOrDataUrl: string) => Promis
  * @param {number} options.end? End page position starting from 1.
  * @param {boolean} options.archive? If true, it generates an archive (.zip) containing all images with the same name as the output directory (outputDir). Default is false.
  * @param {string} options.background? Background color of merged thumbnails.
- *                                      This option accepts a color name, a hex color, or a numerical RGB, RGBA, HSL, HSLA, CMYK, or CMYKA specification.
- *                                      For example, blue, #dddddff, rgb(255,255,255), etc.
- *                                      Default is white.
- * @param {number} options.offset?     Offset (in pixels) between merged images. Default is 0.
+ *                                     This option accepts a color name, a hex color, or a numerical RGB, RGBA, HSL, HSLA, CMYK, or CMYKA specification.
+ *                                     For example, blue, #dddddff, rgb(255,255,255), etc.
+ *                                     Default is white.
+ * @param {number} options.offset? Offset (in pixels) between merged images. Default is 0.
  * @return {Promise<ThumbnailResult>} Thumbnail Result. This is an object with the following elements.
  *                                    - {string[]} thumbnailPaths Path list of output thumbnail files. For example, sample_1.jpg, sample_2.jpg.
  *                                    - {string} mergedPath The path of the image file from which the thumbnails for each page are merged. For example, sample.jpg.

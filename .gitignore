@@ -1,4 +1,5 @@
-node_modules/
+*node_modules/
+demo/public/upload/*
+!demo/public/upload/
+!.gitkeep
 .vscode/
-web-demo/public/upload/*
-!web-demo/public/upload/
